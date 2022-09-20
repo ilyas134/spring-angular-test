@@ -1,6 +1,5 @@
 package lu.atozdigital.api.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +8,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
+
 
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -19,17 +21,14 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Article {
+@Table(name = "OrderEcommerce")
+public class Order {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long articleId;
-    private String articleName;
-    private Long price;
+    private Long orderId;
+    private String uuid;
+    private Instant createdDate;
     @OneToMany(fetch = LAZY)
     @JsonManagedReference
-    private List<Image> images;
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "orderId", referencedColumnName = "orderId")
-    @JsonBackReference
-    private Order order;
+    private List<Article> articles;
 }

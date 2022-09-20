@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ArticleRequest {
-    private Long articleId;
     private String articleName;
     private Long price;
 }
