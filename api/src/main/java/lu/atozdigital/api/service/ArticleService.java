@@ -3,6 +3,7 @@ package lu.atozdigital.api.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lu.atozdigital.api.dto.ArticleRequest;
+import lu.atozdigital.api.dto.ArticleResponse;
 import lu.atozdigital.api.mapper.ArticleMapper;
 import lu.atozdigital.api.model.Article;
 import lu.atozdigital.api.model.Image;
@@ -16,6 +17,8 @@ import java.awt.image.Kernel;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
@@ -41,5 +44,12 @@ public class ArticleService {
         }
         article.setImages(images);
         return articleRepository.save(article);
+    }
+    @Transactional(readOnly = true)
+    public List<ArticleResponse> getAllArticles() {
+        return articleRepository.findAll()
+                .stream()
+                .map(articleMapper::mapToDto)
+                .collect(toList());
     }
 }

@@ -3,6 +3,7 @@ package lu.atozdigital.api.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lu.atozdigital.api.dto.ArticleRequest;
+import lu.atozdigital.api.dto.ArticleResponse;
 import lu.atozdigital.api.model.Article;
 import lu.atozdigital.api.service.ArticleService;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.springframework.http.ResponseEntity.status;
 
@@ -31,5 +33,9 @@ public class ArticleController {
             log.error("Exception occurred when saving article", exception);
         }
         return status(HttpStatus.CREATED).body(article);
+    }
+    @GetMapping
+    public ResponseEntity<List<ArticleResponse>> getAllArticles() {
+        return status(HttpStatus.OK).body(articleService.getAllArticles());
     }
 }
