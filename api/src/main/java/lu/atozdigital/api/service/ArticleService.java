@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lu.atozdigital.api.dto.ArticleRequest;
 import lu.atozdigital.api.dto.ArticleResponse;
+import lu.atozdigital.api.exception.ArticleNotFoundException;
 import lu.atozdigital.api.mapper.ArticleMapper;
 import lu.atozdigital.api.model.Article;
 import lu.atozdigital.api.model.Image;
@@ -51,5 +52,11 @@ public class ArticleService {
                 .stream()
                 .map(articleMapper::mapToDto)
                 .collect(toList());
+    }
+    @Transactional(readOnly = true)
+    public ArticleResponse getArticle(Long id) {
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new ArticleNotFoundException(id.toString()));
+        return articleMapper.mapToDto(article);
     }
 }

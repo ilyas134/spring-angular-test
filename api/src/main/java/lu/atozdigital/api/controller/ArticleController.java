@@ -38,4 +38,9 @@ public class ArticleController {
     public ResponseEntity<List<ArticleResponse>> getAllArticles() {
         return status(HttpStatus.OK).body(articleService.getAllArticles());
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<ArticleResponse> getArticle(@PathVariable Long id) {
+        return status(HttpStatus.OK).body(articleService.getArticle(id));
+    }
+
 }
