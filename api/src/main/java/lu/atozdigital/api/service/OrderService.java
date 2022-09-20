@@ -3,6 +3,7 @@ package lu.atozdigital.api.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lu.atozdigital.api.dto.ArticleResponse;
 import lu.atozdigital.api.dto.OrderRequest;
 
 import lu.atozdigital.api.dto.OrderResponse;
@@ -18,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
@@ -41,5 +44,12 @@ public class OrderService {
         order.setArticles(articles);
         order.setUuid(UUID.randomUUID().toString());
         return orderRepository.save(order);
+    }
+    @Transactional(readOnly = true)
+    public List<OrderResponse> getAllOrders() {
+        return orderRepository.findAll()
+                .stream()
+                .map(orderMapper::mapToDto)
+                .collect(toList());
     }
 }
