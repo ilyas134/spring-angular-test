@@ -28,8 +28,7 @@ public class Article {
     @OneToMany(fetch = LAZY)
     @JsonManagedReference
     private List<Image> images;
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "orderId", referencedColumnName = "orderId")
+    @ManyToMany(mappedBy = "articles")
     @JsonBackReference
-    private Order order;
+    private List<Order> orders;
 }

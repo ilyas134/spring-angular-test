@@ -28,7 +28,11 @@ public class Order {
     private Long orderId;
     private String uuid;
     private Instant createdDate;
-    @OneToMany(fetch = LAZY)
+    @ManyToMany(fetch = LAZY)
+    @JoinTable(
+            name = "order_article",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id"))
     @JsonManagedReference
     private List<Article> articles;
 }

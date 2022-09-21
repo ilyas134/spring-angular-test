@@ -30,4 +30,9 @@ public class OrderController {
     public ResponseEntity<List<OrderResponse>> getAllOrders() {
         return status(HttpStatus.OK).body(orderService.getAllOrders());
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Order> changeOrder(@RequestBody OrderRequest orderRequest,@PathVariable Long id)  {
+        Order order =orderService.change(orderRequest,id);
+        return status(HttpStatus.CREATED).body(order);
+    }
 }
