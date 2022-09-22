@@ -1,18 +1,57 @@
 .form-control {
-    border-radius: 3px;
-    width: 600px;
-    margin-left: 20px;
-    justify-content: space-around;
-    
+    border: none;
+    width: 100%;
+   
+    margin-right: 10px;
+    margin-left: 10px;
    
 
 }
 
 .search-icon {
     position: absolute;
-    z-index: 10;
-    right: 47%;
-    top: 20px;
+    right:48%;
     color: blue;
     
 }
+
+ 
+  .form-group {
+    margin-right: 10px;
+     width: 600px;
+    display: flex  !important;
+    align-items: center  !important;
+    justify-content: space-between  !important;
+  }
+  .btn-add-product{
+    /* Green */
+    border: solid 2px;
+    background-color: transparent;
+    border-color: white;
+    border-radius: 7px;
+    width: 150px;
+    height: 40px;
+    float: right;
+     margin-right: 10px;
+     z-index: 10px;
+     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1)
+
+
+  }
+  a{
+     text-decoration:none;
+    color:white;
+  }
+  .btn-container{
+    display: flex;
+    flex-direction:row;
+  }
+  .logoBtn{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  }

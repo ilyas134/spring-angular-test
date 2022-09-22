@@ -2,27 +2,18 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import {HttpClient} from '@angular/common/http'
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-interface HandleFile {
-  file:File,
-  url:SafeUrl,
-
-}
-interface Product {
-  articleId:Number,
-  articleName:String,
-  price:Number,
-  images:HandleFile[]
-
-}
+import { Product } from '../_model/Product';
+import { HandleFile } from '../_model/HandleFile';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsApiService {
   readonly API_URL="http://localhost:8080"
-  readonly ENDPOINT_GETMEETINGS="/api/Article/"
+  readonly ENDPOINT_ARTICLES="/api/Article/"
+  
   constructor(private http : HttpClient,private sanitizer:DomSanitizer) { }
   getProduct(){
-    return this.http.get<Product[]>(this.API_URL+this.ENDPOINT_GETMEETINGS)
+    return this.http.get<Product[]>(this.API_URL+this.ENDPOINT_ARTICLES)
     .pipe(
       map((product:Product[])=>{
       product.map((p:Product)=>{
@@ -58,5 +49,8 @@ export class ProductsApiService {
    const blob=new Blob([int8Array],{type:imageType})
    return blob;
 
+  }
+  public addProduct(product:FormData){
+    return this.http.post<Product>(this.API_URL+this.ENDPOINT_ARTICLES,product)
   }
 }

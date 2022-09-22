@@ -1,0 +1,32 @@
+<div class="container  mt-5">
+    <div class="card p-2">
+        <div class="row">
+
+            <div class="col-6">
+                <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Name of product</mat-label>
+                        <input matInput placeholder="Placeholder"
+                        [(ngModel)]="product.articleName"
+                        name="articleName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>price</mat-label>
+                        <input matInput placeholder="Placeholder"
+                        [(ngModel)]="product.price"
+                        name="price">
+                    </mat-form-field>
+                    <div align="end">
+                        <button mat-stroked-button color="primary" type="submit" style="margin-right: 5px;">Add product</button>
+                        <button mat-stroked-button color="primary">Clear</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <input type="file" multiple value="select" #selectFile
+                     (change)="onFileSelect($event) "
+                >
+            </div>
+        </div>
+    </div>
+</div>
