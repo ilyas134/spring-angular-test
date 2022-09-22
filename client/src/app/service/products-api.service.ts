@@ -27,7 +27,6 @@ export class ProductsApiService {
       map((product:Product[])=>{
       product.map((p:Product)=>{
           this.createImages(p)})
-      console.log("hey")
       return product;
     }))
   }

@@ -2,7 +2,6 @@ package lu.atozdigital.api.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lu.atozdigital.api.dto.ArticleResponse;
 import lu.atozdigital.api.dto.OrderRequest;
 import lu.atozdigital.api.dto.OrderResponse;
 import lu.atozdigital.api.model.Order;

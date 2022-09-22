@@ -13,8 +13,6 @@ export class ProductsComponent implements OnInit {
     this.api.getProduct()
     .subscribe(res=>{
       this.productList = res;
-       console.log(this.productList[0].images[0].url)
-      console.log(this.productList)
     });
   }
 }
