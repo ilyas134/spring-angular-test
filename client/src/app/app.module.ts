@@ -15,6 +15,8 @@ import {MatButtonModule} from '@angular/material/button'
 import {FormsModule} from '@angular/forms'
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CardComponent } from './component/card/card.component';
+import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { CardComponent } from './component/card/card.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

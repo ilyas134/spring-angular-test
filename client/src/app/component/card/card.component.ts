@@ -37,7 +37,11 @@ export class CardComponent implements OnInit {
     const orderToCreate:Order={
       articlesId:this.productsID
     }
-    this.api.addOrder(orderToCreate)
+    this.api.addOrder(orderToCreate).subscribe(
+     (res)=> {
+      console.log(res)
+      this.emptycart()}
+    )
   }
 
 }

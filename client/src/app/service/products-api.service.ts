@@ -55,9 +55,7 @@ export class ProductsApiService {
     return this.http.post<Product>(this.API_URL+this.ENDPOINT_ARTICLES,product)
   }
   public addOrder(order:Order){
-    return this.http.post<Order>(this.API_URL+this.ENDPOINT_ORDER,order).subscribe(
-      ((res)=>console.log(res))
-    )
+    return this.http.post<Order>(this.API_URL+this.ENDPOINT_ORDER,order)
     
   }
 }

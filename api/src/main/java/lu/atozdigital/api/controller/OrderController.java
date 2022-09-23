@@ -23,7 +23,6 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest)  {
         Order order =orderService.save(orderRequest);
-        System.out.println("order made");
         return status(HttpStatus.CREATED).body(order);
     }
     @GetMapping
