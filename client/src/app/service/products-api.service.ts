@@ -4,13 +4,14 @@ import {HttpClient} from '@angular/common/http'
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Product } from '../_model/Product';
 import { HandleFile } from '../_model/HandleFile';
+import { Order } from '../_model/Order';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsApiService {
   readonly API_URL="http://localhost:8080"
   readonly ENDPOINT_ARTICLES="/api/Article/"
-  
+  readonly ENDPOINT_ORDER="/api/Order/"
   constructor(private http : HttpClient,private sanitizer:DomSanitizer) { }
   getProduct(){
     return this.http.get<Product[]>(this.API_URL+this.ENDPOINT_ARTICLES)
@@ -52,5 +53,11 @@ export class ProductsApiService {
   }
   public addProduct(product:FormData){
     return this.http.post<Product>(this.API_URL+this.ENDPOINT_ARTICLES,product)
+  }
+  public addOrder(order:Order){
+    return this.http.post<Order>(this.API_URL+this.ENDPOINT_ORDER,order).subscribe(
+      ((res)=>console.log(res))
+    )
+    
   }
 }

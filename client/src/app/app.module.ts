@@ -13,13 +13,16 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input'
 import {MatButtonModule} from '@angular/material/button'
 import {FormsModule} from '@angular/forms'
+import {MatGridListModule} from '@angular/material/grid-list';
+import { CardComponent } from './component/card/card.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProductsComponent,
     OrdersComponent,
-    AddProductComponent
+    AddProductComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import {FormsModule} from '@angular/forms'
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

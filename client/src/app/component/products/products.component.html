@@ -35,7 +35,7 @@
                 <img [src]="item.images[0].url" alt="">
                 <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.articleName}}</h5>
                 <p><strong>Price:</strong> ${{item.price}}</p>
-                <button class="btn btn-primary">Add to cart</button>
+                <button class="btn btn-primary"  (click)=addtocart(item)>Add to cart</button>
             </div>
             </div>
         </ng-container>

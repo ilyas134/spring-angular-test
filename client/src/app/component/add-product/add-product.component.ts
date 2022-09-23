@@ -56,4 +56,7 @@ export class AddProductComponent implements OnInit {
       this.product.images.push(handleFile)
      }
   }
+  removeImage(i:number){
+    this.product.images.splice(i,1);
+  }
 }
